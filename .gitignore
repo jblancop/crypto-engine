@@ -1,0 +1,9 @@
+# Archivos generados por Python:
+__pycache__/
+# Archivos de datos:
+*.txt
+# Directorios:
+code/output
+code/testing
+# Entorno virtual
+.venv

@@ -1,0 +1,12 @@
+[project]
+name = "crypto-engine"
+version = "0.1.0"
+description = "Multi-API Crypto Trading Signal Engine"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "numpy>=2.4.6",
+    "omegaconf>=2.3.0",
+    "pandas>=3.0.3",
+    "requests>=2.34.2",
+]
