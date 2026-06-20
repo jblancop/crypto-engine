@@ -1,0 +1,88 @@
+---
+all: #Parámetros comunes a todas las plataformas.
+  df_fields:
+    candles:
+      - open
+      - high
+      - low
+      - close
+      - volume
+  narrow_candles: 3 #En marcos temporales bajos se busca inmediatez,
+  wide_candles: 20 #mientras que en altos, consolidación de la divergencia.
+  max_workers: 20
+  min_strength: 3
+  pivot_window: 10
+  rsi_period: 14
+  report_folder: code/output
+
+bitunix:
+  class_name: Bitunix
+  api_url: https://openapi.bitunix.com/api/spot/v1
+  endpoint:
+    candles: market/kline
+    pairs: common/coin_pair/list
+  api_fields:
+    candles:
+      symbol: str
+      open: float
+      high: float
+      low: float
+      close: float
+      volume: float
+      ts: str
+  timeframes: 
+    15: 15min
+    60: 1h
+    240: 4h
+    D: 1D
+  api_batch: 201
+
+kraken:
+  class_name: Kraken
+  api_url: https://api.kraken.com/0/public
+  endpoint:
+    candles: OHLC
+    pairs: AssetPairs
+  api_fields:
+    candles:
+      time: int
+      open: float
+      high: float
+      low: float
+      close: float
+      vwap: float
+      volume: float
+      count: int
+  timeframes: 
+    15: 15min
+    60: 1h
+    240: 4h
+    1440: 1D
+  api_batch: 721
+
+okx: 
+  class_name: OKX
+  api_url: https://www.okx.com/api/v5
+  endpoint:
+    candles: market/candles
+    pairs: public/instruments
+  api_fields:
+    candles:
+      ts: int
+      open: float
+      high: float
+      low: float
+      close: float
+      volume: float
+      volCcy: float
+      volCcyQuote: float
+      confirm: int
+  timeframes: 
+    15m: 15min
+    1H: 1h
+    4H: 4h
+    1Dutc: 1D
+  api_batch: 300
+  pairs_params: 
+    instType: SPOT
+...
